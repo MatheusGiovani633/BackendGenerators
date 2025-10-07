@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
-
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace BackendGenerators.Models
 {
     public class OrdemServicoCaixa
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Cod_OrdemServicocaixa { get; set; }
         public int Cod_Classificacao { get; set; }
         public int Cod_Pessoa { get; set; }

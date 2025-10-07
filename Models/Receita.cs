@@ -1,13 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace BackendGenerators.Models
 {
 
     public class Receita
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Cod_Receita { get; set; }
         public int Cod_Pessoa { get; set; }
         public int Cod_OrdemServicocaixa { get; set; }
@@ -31,8 +30,6 @@ namespace BackendGenerators.Models
         public decimal DNPOE { get; set; }
         public decimal COOD { get; set; }
         public decimal COOE { get; set; }
-        public List<decimal> DioptriaLonge { get; set; } = new();
-        public List<decimal> DioptriaPerto { get; set; } = new();
         public string Observacoes { get; set; }
 
     }

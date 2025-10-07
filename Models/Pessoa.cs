@@ -1,7 +1,11 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace BackendGenerators.Models
 {
     public class Pessoa
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Cod_Pessoa { get; set; }
         public int Identificador { get; set; }
         public string Nome { get; set; }
