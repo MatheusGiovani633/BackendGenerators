@@ -1491,24 +1491,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Matheus\\.nuget\\packages\\": {}
+    "C:\\Users\\mpereira\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Matheus\\Desktop\\Estudos-programação\\C# Estudos\\BackendGenerators\\BackendGenerators.csproj",
+      "projectUniqueName": "C:\\Users\\mpereira\\Desktop\\Estudos\\Angular\\projeto-angular-bootstrap\\backend\\BackendGenerators\\BackendGenerators.csproj",
       "projectName": "BackendGenerators",
-      "projectPath": "C:\\Users\\Matheus\\Desktop\\Estudos-programação\\C# Estudos\\BackendGenerators\\BackendGenerators.csproj",
-      "packagesPath": "C:\\Users\\Matheus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Matheus\\Desktop\\Estudos-programação\\C# Estudos\\BackendGenerators\\obj\\",
+      "projectPath": "C:\\Users\\mpereira\\Desktop\\Estudos\\Angular\\projeto-angular-bootstrap\\backend\\BackendGenerators\\BackendGenerators.csproj",
+      "packagesPath": "C:\\Users\\mpereira\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mpereira\\Desktop\\Estudos\\Angular\\projeto-angular-bootstrap\\backend\\BackendGenerators\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Matheus\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\mpereira\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1527,7 +1535,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net9.0": {
@@ -1575,7 +1583,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

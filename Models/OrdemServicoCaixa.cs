@@ -23,14 +23,16 @@ namespace BackendGenerators.Models
         public int Status { get; set; }
         public string Observacoes { get; set; }
         public int Cod_Laboratorio { get; set; }
-        public List<int> Cod_produto { get; set; }
-        public List<decimal> Quantidade { get; set; }
-        public List<decimal> ValorUnitario { get; set; }
-        public List<decimal> Total { get; set; }
-        public List<int> Cod_Servico { get; set; }
-        public List<decimal> QuantidadeServico { get; set; }
-        public decimal ValorDesconto { get; set; }
-        public decimal ValorAcrescimo { get; set; }
+        public int Cod_lenteOD { get; set; }
+        public int Cod_lenteOE { get; set; }
+        public int Cod_armacao { get; set; }
+        public int Quantidade { get; set; }
+        public double ValorUnitario { get; set; }
+        public double Total { get; set; }
+        public int Cod_Servico { get; set; }
+        public int QuantidadeServico { get; set; }
+        public double ValorDesconto { get; set; }
+        public double ValorAcrescimo { get; set; }
         
 
     }
