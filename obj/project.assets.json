@@ -1497,11 +1497,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mpereira\\Desktop\\Estudos\\Angular\\projeto-angular-bootstrap\\backend\\BackendGenerators\\BackendGenerators.csproj",
+      "projectUniqueName": "C:\\Users\\mpereira\\Desktop\\Estudos\\C#\\BackendGenerators\\BackendGenerators.csproj",
       "projectName": "BackendGenerators",
-      "projectPath": "C:\\Users\\mpereira\\Desktop\\Estudos\\Angular\\projeto-angular-bootstrap\\backend\\BackendGenerators\\BackendGenerators.csproj",
+      "projectPath": "C:\\Users\\mpereira\\Desktop\\Estudos\\C#\\BackendGenerators\\BackendGenerators.csproj",
       "packagesPath": "C:\\Users\\mpereira\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mpereira\\Desktop\\Estudos\\Angular\\projeto-angular-bootstrap\\backend\\BackendGenerators\\obj\\",
+      "outputPath": "C:\\Users\\mpereira\\Desktop\\Estudos\\C#\\BackendGenerators\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -9,6 +9,8 @@ namespace BackendGenerators.Data
         public DbSet<Pessoa> Pessoas { get; set; }
         public DbSet<Receita> Receitas { get; set; }
         public DbSet<OrdemServicoCaixa> OrdemServicoCaixa { get; set; }
+        public DbSet<Medico> Medico { get; set; }
+        
         
     }
 }

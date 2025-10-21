@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "17elM2MbQrI=",
+  "dgSpecHash": "vBbigDUga0s=",
   "success": true,
-  "projectFilePath": "C:\\Users\\mpereira\\Desktop\\Estudos\\Angular\\projeto-angular-bootstrap\\backend\\BackendGenerators\\BackendGenerators.csproj",
+  "projectFilePath": "C:\\Users\\mpereira\\Desktop\\Estudos\\C#\\BackendGenerators\\BackendGenerators.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mpereira\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\mpereira\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.9\\microsoft.aspnetcore.openapi.9.0.9.nupkg.sha512",
