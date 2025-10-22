@@ -3,6 +3,7 @@ using System;
 using BackendGenerators.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -16,14 +17,18 @@ namespace BackendGenerators.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.7")
+                .HasAnnotation("ProductVersion", "9.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
             modelBuilder.Entity("BackendGenerators.Models.Medico", b =>
                 {
                     b.Property<int>("Cod_Medico")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Cod_Medico"));
 
                     b.Property<int>("CRM")
                         .HasColumnType("int");
@@ -41,6 +46,8 @@ namespace BackendGenerators.Migrations
                     b.Property<int>("Cod_OrdemServicocaixa")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Cod_OrdemServicocaixa"));
 
                     b.Property<int>("Cod_Classificacao")
                         .HasColumnType("int");
@@ -125,6 +132,8 @@ namespace BackendGenerators.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Cod_Pessoa"));
+
                     b.Property<string>("Bairro")
                         .HasColumnType("longtext");
 
@@ -198,6 +207,8 @@ namespace BackendGenerators.Migrations
                     b.Property<int>("Cod_Receita")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Cod_Receita"));
 
                     b.Property<decimal>("AdicaoOD")
                         .HasColumnType("decimal(65,30)");
