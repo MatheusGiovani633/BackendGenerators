@@ -2,6 +2,7 @@
 using BackendGenerators.Models;
 using BackendGenerators.Services;
 using Microsoft.AspNetCore.Mvc;
+using BackendGenerators.Models.Dtos;
     public class GeneratorsController : ControllerBase
     {
         private readonly IPessoaService _pessoaService;
@@ -24,7 +25,9 @@ using Microsoft.AspNetCore.Mvc;
         {
             var pessoa = await _pessoaService.GetPessoaAleatoriaAsync(tipo);
             if (pessoa == null) return NotFound("Tipo inválido. Use 'fisica' ou 'juridica'.");
-            return Ok(pessoa);
+            var pessoaDto = pessoa.Adapt<PessoaDto>();
+           
+            return Ok(pessoaDto);
         }
 
         [HttpGet("pessoaFisica/{id}")]
@@ -32,6 +35,8 @@ using Microsoft.AspNetCore.Mvc;
         {
             var pessoa = await _pessoaService.GetPessoaByIdAsync(id);
             if (pessoa == null) return NotFound("O ID informado não existe");
-            return Ok(pessoa);
+            var pessoaDto = pessoa.Adapt<PessoaDto>();
+            
+            return Ok(pessoaDto);
         }
     }

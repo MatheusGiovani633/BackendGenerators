@@ -1,12 +1,9 @@
-using BackendGenerators.Models;
-using System;
 namespace BackendGenerators.Helpers
 {
-
-    public static class Helpers
+    using BackendGenerators.Models;
+    public class Helpers
     {
         private static readonly Random _random = new();
-        // helpers privados
         public static Pessoa CriarFisica()
         {
             return new Pessoa
@@ -22,7 +19,7 @@ namespace BackendGenerators.Helpers
                 Cnpj = null,
                 DataNascimento = DateTime.Now.AddYears(-_random.Next(18, 70)).AddDays(_random.Next(0, 365)),
                 Sexo = _random.Next(0, 2) == 0,
-                Cep = _random.Next(90000, 99999).ToString(),
+                Cep = _random.Next(90000, 99999) + "-" + _random.Next(900, 999).ToString(),
                 Logradouro = "Rua " + _random.Next(1, 1000),
                 Numero = _random.Next(1, 1000).ToString(),
                 Cidade = "Cidade " + _random.Next(1, 100),
@@ -50,7 +47,7 @@ namespace BackendGenerators.Helpers
                 Cnpj = GerarCnpjValido(),
                 DataNascimento = DateTime.Now.AddYears(-_random.Next(18, 70)).AddDays(_random.Next(0, 365)),
                 Sexo = _random.Next(0, 2) == 0,
-                Cep = _random.Next(90000, 99999).ToString(),
+                Cep = _random.Next(90000, 99999) + "-" + _random.Next(900, 999).ToString(),
                 Logradouro = "Rua " + _random.Next(1, 1000),
                 Numero = _random.Next(1, 1000).ToString(),
                 Cidade = "Cidade " + _random.Next(1, 100),
@@ -59,7 +56,7 @@ namespace BackendGenerators.Helpers
                 Bairro = "Bairro " + _random.Next(1, 100),
                 InscricaoEstadual = _random.Next(10000000, 99999999).ToString(),
                 InscricaoMunicipal = null,
-                TipoCNPJ = 0
+                TipoCNPJ = _random.Next(1, 5)
             };
         }
 

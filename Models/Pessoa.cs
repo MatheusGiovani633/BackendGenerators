@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using BackendGenerators.Models.Dtos;
 namespace BackendGenerators.Models
 {
     public class Pessoa
@@ -28,6 +29,37 @@ namespace BackendGenerators.Models
         public string InscricaoEstadual { get; set; }
         public string InscricaoMunicipal { get; set; }
         public int TipoCNPJ { get; set; }
-                
+
+        internal object Adapt<T>()
+        {
+            if (typeof(T) == typeof(PessoaDto))
+            {
+                var dto = new PessoaDto
+                {
+                    Identificador = Identificador,
+                    Nome = Nome,
+                    Razaosocial = Razaosocial,
+                    Email = Email,
+                    Telefone = Telefone,
+                    Celular = Celular,
+                    Celular2 = Celular2,
+                    DataNascimento = DataNascimento,
+                    Cpf = Cpf,
+                    Cnpj = Cnpj,
+                    Sexo = Sexo,
+                    Cep = Cep,
+                    Logradouro = Logradouro,
+                    Numero = Numero,
+                    Cidade = Cidade,
+                    Estado = Estado,
+                    Complemento = Complemento,
+                    Bairro = Bairro,
+                    InscricaoEstadual = InscricaoEstadual,
+                    InscricaoMunicipal = InscricaoMunicipal,
+                };
+                return (T)(object)dto;
+            }
+            throw new NotImplementedException($"Adaptation to {typeof(T).Name} is not implemented.");
+        }
     }
 }
