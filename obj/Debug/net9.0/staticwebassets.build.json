@@ -1,1 +1,12 @@
-{"Version":1,"Hash":"pfmCshFKR8hYdP1yLltKavMpDlfQHjGSkSZYPIptMps=","Source":"BackendGenerators","BasePath":"_content/BackendGenerators","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}
+{
+  "Version": 1,
+  "Hash": "pfmCshFKR8hYdP1yLltKavMpDlfQHjGSkSZYPIptMps=",
+  "Source": "BackendGenerators",
+  "BasePath": "_content/BackendGenerators",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
