@@ -7,27 +7,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BackendGenerators.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialDb : Migration
+    public partial class CreateMedicoTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterDatabase()
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "Medico",
-                columns: table => new
-                {
-                    Cod_Medico = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Cod_Pessoa = table.Column<int>(type: "int", nullable: false),
-                    CRM = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Medico", x => x.Cod_Medico);
-                })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
@@ -155,6 +140,33 @@ namespace BackendGenerators.Migrations
                     table.PrimaryKey("PK_Receitas", x => x.Cod_Receita);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Medico",
+                columns: table => new
+                {
+                    Cod_Medico = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Cod_Pessoa = table.Column<int>(type: "int", nullable: false),
+                    CRM = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Medico", x => x.Cod_Medico);
+                    table.ForeignKey(
+                        name: "FK_Medico_Pessoas_Cod_Pessoa",
+                        column: x => x.Cod_Pessoa,
+                        principalTable: "Pessoas",
+                        principalColumn: "Cod_Pessoa",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Medico_Cod_Pessoa",
+                table: "Medico",
+                column: "Cod_Pessoa",
+                unique: true);
         }
 
         /// <inheritdoc />
@@ -167,10 +179,10 @@ namespace BackendGenerators.Migrations
                 name: "OrdemServicoCaixa");
 
             migrationBuilder.DropTable(
-                name: "Pessoas");
+                name: "Receitas");
 
             migrationBuilder.DropTable(
-                name: "Receitas");
+                name: "Pessoas");
         }
     }
 }

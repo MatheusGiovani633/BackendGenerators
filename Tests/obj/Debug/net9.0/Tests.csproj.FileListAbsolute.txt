@@ -175,3 +175,14 @@ C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\Tests\bin\Debug\net9.0\Te
 C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\Tests\bin\Debug\net9.0\Tests\bin\Debug\net9.0\Tests\obj\Tests.csproj.nuget.dgspec.json
 C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\Tests\bin\Debug\net9.0\Tests\bin\Debug\net9.0\Tests\TestPessoaJson.json
 C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\Tests\bin\Debug\net9.0\Tests\obj\Debug\net9.0\Tests.sourcelink.json
+C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\Tests\bin\Debug\net9.0\Tests\bin\Debug\net9.0\Tests\bin\Debug\net9.0\appsettings.Development.json
+C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\Tests\bin\Debug\net9.0\Tests\bin\Debug\net9.0\Tests\bin\Debug\net9.0\appsettings.json
+C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\Tests\bin\Debug\net9.0\Tests\bin\Debug\net9.0\Tests\bin\Debug\net9.0\BackendGenerators.deps.json
+C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\Tests\bin\Debug\net9.0\Tests\bin\Debug\net9.0\Tests\bin\Debug\net9.0\BackendGenerators.runtimeconfig.json
+C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\Tests\bin\Debug\net9.0\Tests\bin\Debug\net9.0\Tests\bin\Debug\net9.0\BackendGenerators.staticwebassets.endpoints.json
+C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\Tests\bin\Debug\net9.0\Tests\bin\Debug\net9.0\Tests\bin\Debug\net9.0\Tests.deps.json
+C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\Tests\bin\Debug\net9.0\Tests\bin\Debug\net9.0\Tests\bin\Debug\net9.0\Tests.runtimeconfig.json
+C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\Tests\bin\Debug\net9.0\Tests\bin\Debug\net9.0\Tests\bin\Debug\net9.0\Tests\obj\project.assets.json
+C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\Tests\bin\Debug\net9.0\Tests\bin\Debug\net9.0\Tests\bin\Debug\net9.0\Tests\obj\Tests.csproj.nuget.dgspec.json
+C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\Tests\bin\Debug\net9.0\Tests\bin\Debug\net9.0\Tests\bin\Debug\net9.0\Tests\TestPessoaJson.json
+C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\Tests\bin\Debug\net9.0\Tests\bin\Debug\net9.0\Tests\obj\Debug\net9.0\Tests.sourcelink.json

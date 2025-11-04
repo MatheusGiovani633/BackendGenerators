@@ -8,6 +8,7 @@ namespace BackendGenerators.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Cod_Pessoa { get; set; }
+        public virtual Medico Medico { get; set; }
         public int Identificador { get; set; }
         public string Nome { get; set; }
         public string Razaosocial { get; set; }

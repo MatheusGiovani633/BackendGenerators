@@ -1,13 +1,15 @@
 using BackendGenerators.Data;
 using Microsoft.EntityFrameworkCore;
-
+using BackendGenerators.Services;
+using BackendGenerators.Repository;
 var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<BackendGenerators.Services.IPessoaService, BackendGenerators.Services.PessoaService>();
+builder.Services.AddScoped<IPessoaService, PessoaService>();
+builder.Services.AddScoped<PessoaRepository>();
 
 var connectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
 builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));

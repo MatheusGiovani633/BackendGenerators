@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackendGenerators.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251021224233_Initial")]
-    partial class Initial
+    [Migration("20251104000828_CreateMedicoTable")]
+    partial class CreateMedicoTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,6 +40,9 @@ namespace BackendGenerators.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Cod_Medico");
+
+                    b.HasIndex("Cod_Pessoa")
+                        .IsUnique();
 
                     b.ToTable("Medico");
                 });
@@ -285,6 +288,22 @@ namespace BackendGenerators.Migrations
                     b.HasKey("Cod_Receita");
 
                     b.ToTable("Receitas");
+                });
+
+            modelBuilder.Entity("BackendGenerators.Models.Medico", b =>
+                {
+                    b.HasOne("BackendGenerators.Models.Pessoa", "Pessoa")
+                        .WithOne("Medico")
+                        .HasForeignKey("BackendGenerators.Models.Medico", "Cod_Pessoa")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Pessoa");
+                });
+
+            modelBuilder.Entity("BackendGenerators.Models.Pessoa", b =>
+                {
+                    b.Navigation("Medico");
                 });
 #pragma warning restore 612, 618
         }

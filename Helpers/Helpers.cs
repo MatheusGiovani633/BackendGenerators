@@ -59,7 +59,13 @@ namespace BackendGenerators.Helpers
                 TipoCNPJ = _random.Next(1, 5)
             };
         }
-
+        public static Medico CriarMedico()
+        {
+            return new Medico
+            {
+                CRM = _random.Next(10000, 99999),
+            };
+        }
         private static string GerarCpfValido()
         {
             var rand = new Random();

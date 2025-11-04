@@ -38,6 +38,9 @@ namespace BackendGenerators.Migrations
 
                     b.HasKey("Cod_Medico");
 
+                    b.HasIndex("Cod_Pessoa")
+                        .IsUnique();
+
                     b.ToTable("Medico");
                 });
 
@@ -282,6 +285,22 @@ namespace BackendGenerators.Migrations
                     b.HasKey("Cod_Receita");
 
                     b.ToTable("Receitas");
+                });
+
+            modelBuilder.Entity("BackendGenerators.Models.Medico", b =>
+                {
+                    b.HasOne("BackendGenerators.Models.Pessoa", "Pessoa")
+                        .WithOne("Medico")
+                        .HasForeignKey("BackendGenerators.Models.Medico", "Cod_Pessoa")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Pessoa");
+                });
+
+            modelBuilder.Entity("BackendGenerators.Models.Pessoa", b =>
+                {
+                    b.Navigation("Medico");
                 });
 #pragma warning restore 612, 618
         }
