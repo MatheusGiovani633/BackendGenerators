@@ -46,15 +46,21 @@ namespace BackendGenerators.Services
             };
             return await _repo.CriarMedicoAleatorioAsync(medico);
         }
-        public async Task<Pessoa> GetPessoaAleatoriaAsync(string tipo)
+        
+        public async Task<List<Pessoa>> GetPessoaAleatoriaAsync()
+        {
+            return await _repo.GetPessoaAleatoriaAsync();
+        }  
+
+        public async Task<Pessoa> GetPessoaAleatoriaTipoAsync(string tipo)
         {
             if (string.Equals(tipo, "fisica", StringComparison.OrdinalIgnoreCase))
             {
-                await _repo.GetPessoaAleatoriaFisicaAsync(tipo);
+                return await _repo.GetPessoaAleatoriaFisicaAsync(tipo);
             }
             if (string.Equals(tipo, "juridica", StringComparison.OrdinalIgnoreCase))
             {
-                await _repo.GetPessoaAleatoriaJuridicaAsync(tipo);
+                return await _repo.GetPessoaAleatoriaJuridicaAsync(tipo);
             }
             return null;
         }

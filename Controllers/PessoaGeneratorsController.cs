@@ -22,13 +22,39 @@ public class GeneratorsController : ControllerBase
     }
 
     [HttpGet("pessoa/{tipo}")]
-    public async Task<ActionResult<Pessoa>> GetPessoaAleatoria(string tipo)
+    public async Task<ActionResult<Pessoa>> GetPessoaTipoAleatoria(string tipo)
     {
-        var pessoa = await _pessoaService.GetPessoaAleatoriaAsync(tipo);
-        if (pessoa == null) return NotFound("Tipo inválido. Use 'fisica' ou 'juridica'.");
-        var pessoaDto = pessoa.Adapt<PessoaDto>();
+        var pessoa = await _pessoaService.GetPessoaAleatoriaTipoAsync(tipo);
+        if (tipo == "Fisica" || tipo == "fisica")
+        {
+            var pessoaFisicaDto = pessoa.Adapt<PessoaFisicaDto>();
 
-        return Ok(pessoaDto);
+            return Ok(pessoaFisicaDto);
+        }
+        else if (tipo == "Juridica" || tipo == "juridica")
+        {
+            var pessoaJuridicaDto = pessoa.Adapt<PessoaJuridicaDto>();
+
+            return Ok(pessoaJuridicaDto);
+        }
+        else
+        {
+            return BadRequest("Tipo inválido. Use 'fisica' ou 'juridica'.");
+        }
+    }
+
+    [HttpGet("pessoa")]
+    public async Task<ActionResult<List<Pessoa>>> GetPessoaAleatoria(string tipo)
+    {
+        var pessoas = await _pessoaService.GetPessoaAleatoriaAsync();
+        if (pessoas == null)
+            return StatusCode(500, "Erro ao buscar pessoas.");
+
+        if (pessoas.Count == 0)
+            return NoContent();
+
+        var pessoasDto = pessoas.Adapt<List<PessoaDto>>();
+        return Ok(pessoasDto);
     }
 
     [HttpGet("pessoaFisica/{id}")]

@@ -57,6 +57,57 @@ namespace BackendGenerators.Models
                     Bairro = Bairro,
                     InscricaoEstadual = InscricaoEstadual,
                     InscricaoMunicipal = InscricaoMunicipal,
+                    TipoCNPJ = TipoCNPJ,
+                };
+                return (T)(object)dto;
+            }
+            if (typeof(T) == typeof(PessoaFisicaDto))
+            {
+                var dto = new PessoaFisicaDto
+                {
+                    Identificador = Identificador,
+                    Nome = Nome,
+                    Email = Email,
+                    Telefone = Telefone,
+                    Celular = Celular,
+                    Celular2 = Celular2,
+                    DataNascimento = DataNascimento,
+                    Cpf = Cpf,
+                    Sexo = Sexo,
+                    Cep = Cep,
+                    Logradouro = Logradouro,
+                    Numero = Numero,
+                    Cidade = Cidade,
+                    Estado = Estado,
+                    Complemento = Complemento,
+                    Bairro = Bairro,
+                };
+                return (T)(object)dto;
+            }
+            if (typeof(T) == typeof(PessoaJuridicaDto))
+            {
+                var dto = new PessoaJuridicaDto
+                {
+                    Identificador = Identificador,
+                    Nome = Nome,
+                    Razaosocial = Razaosocial,
+                    Email = Email,
+                    Telefone = Telefone,
+                    Celular = Celular,
+                    Celular2 = Celular2,
+                    DataNascimento = DataNascimento,
+                    Cnpj = Cnpj,
+                    InscricaoEstadual = InscricaoEstadual,
+                    InscricaoMunicipal = InscricaoMunicipal,
+                    TipoCNPJ = TipoCNPJ,
+                    Sexo = Sexo,
+                    Cep = Cep,
+                    Logradouro = Logradouro,
+                    Numero = Numero,
+                    Cidade = Cidade,
+                    Estado = Estado,
+                    Complemento = Complemento,
+                    Bairro = Bairro,
                 };
                 return (T)(object)dto;
             }

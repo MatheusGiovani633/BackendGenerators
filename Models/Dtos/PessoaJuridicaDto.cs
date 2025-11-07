@@ -1,7 +1,7 @@
 
 namespace BackendGenerators.Models.Dtos
 {
-    public class PessoaDto
+    public class PessoaJuridicaDto
     {
         public int Identificador { get; set; }
         public string Nome { get; set; }
@@ -11,7 +11,6 @@ namespace BackendGenerators.Models.Dtos
         public string Celular { get; set; }
         public string Celular2 { get; set; }
         public DateTime DataNascimento { get; set; }
-        public string Cpf { get; set; }
         public string Cnpj { get; set; }
         public bool Sexo { get; set; }
         public string Cep { get; set; }

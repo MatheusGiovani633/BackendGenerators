@@ -33,7 +33,11 @@ namespace BackendGenerators.Repository
                 .Include(m => m.Pessoa)
                 .FirstOrDefaultAsync(m => m.Cod_Medico == medico.Cod_Medico);
         }
-
+        public async Task<List<Pessoa>> GetPessoaAleatoriaAsync()
+        {
+            return await _db.Pessoas.ToListAsync();
+            
+        }
         public async Task<Pessoa> GetPessoaAleatoriaFisicaAsync(string tipo)
         {
             return await _db.Pessoas
