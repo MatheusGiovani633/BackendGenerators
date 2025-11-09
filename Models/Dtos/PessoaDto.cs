@@ -2,7 +2,8 @@
 namespace BackendGenerators.Models.Dtos
 {
     public class PessoaDto
-    {
+    {   
+        public int Cod_pessoa { get; set; }
         public int Identificador { get; set; }
         public string Nome { get; set; }
         public string Razaosocial { get; set; }

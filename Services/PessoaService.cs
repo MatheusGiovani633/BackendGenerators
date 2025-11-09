@@ -34,6 +34,7 @@ namespace BackendGenerators.Services
             }
             return null;
         }
+        
         public async Task<Medico> CriarMedicoAleatorioAsync()
         {
             var pessoaFisica = Helpers.CriarFisica();
@@ -45,6 +46,10 @@ namespace BackendGenerators.Services
                 CRM = new Random().Next(10000, 99999),
             };
             return await _repo.CriarMedicoAleatorioAsync(medico);
+        }
+        public async Task<List<Medico>> GetMedicoAleatorioAsync()
+        {
+            return await _repo.GetMedicoAleatorioAsync();
         }
         
         public async Task<List<Pessoa>> GetPessoaAleatoriaAsync()

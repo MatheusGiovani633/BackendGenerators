@@ -9,6 +9,7 @@ namespace BackendGenerators.Services
         Task<Pessoa> GetPessoaAleatoriaTipoAsync(string tipo);
         Task<Pessoa> GetPessoaByIdAsync(int id);
         Task<List<Pessoa>> GetPessoaAleatoriaAsync();
+        Task<List<Medico>> GetMedicoAleatorioAsync();
     }
 
 }

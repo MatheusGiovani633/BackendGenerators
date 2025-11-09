@@ -282,8 +282,6 @@ C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\bin\Debug\net9.0\BackendG
 C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\bin\Debug\net9.0\Azure.Core.dll
 C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\bin\Debug\net9.0\Azure.Identity.dll
 C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\bin\Debug\net9.0\Humanizer.dll
-C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\bin\Debug\net9.0\Mapster.dll
-C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\bin\Debug\net9.0\Mapster.Core.dll
 C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\mpereira\Desktop\Estudos\C#\BackendGenerators\bin\Debug\net9.0\Microsoft.Build.Locator.dll

@@ -38,10 +38,18 @@ namespace BackendGenerators.Repository
             return await _db.Pessoas.ToListAsync();
             
         }
+        public async Task<List<Medico>> GetMedicoAleatorioAsync()
+        {
+            return await _db.Medico
+                .Include(m => m.Pessoa)
+                .AsNoTracking()
+                .ToListAsync();
+        }
         public async Task<Pessoa> GetPessoaAleatoriaFisicaAsync(string tipo)
         {
             return await _db.Pessoas
                 .Where(p => p.Cpf != null)
+                .AsNoTracking()
                 .OrderBy(p => EF.Functions.Random())
                 .FirstOrDefaultAsync();
         }
@@ -49,6 +57,7 @@ namespace BackendGenerators.Repository
         {
             return await _db.Pessoas
                 .Where(p => p.Cnpj != null)
+                .AsNoTracking()
                 .OrderBy(p => EF.Functions.Random())
                 .FirstOrDefaultAsync();
         }

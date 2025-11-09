@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\matheus.giovani\\Documents\\BackendGenerators\\BackendGenerators.csproj": {}
+    "C:\\Users\\mpereira\\Desktop\\Estudos\\C#\\BackendGenerators\\BackendGenerators.csproj": {}
   },
   "projects": {
-    "C:\\Users\\matheus.giovani\\Documents\\BackendGenerators\\BackendGenerators.csproj": {
+    "C:\\Users\\mpereira\\Desktop\\Estudos\\C#\\BackendGenerators\\BackendGenerators.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\matheus.giovani\\Documents\\BackendGenerators\\BackendGenerators.csproj",
+        "projectUniqueName": "C:\\Users\\mpereira\\Desktop\\Estudos\\C#\\BackendGenerators\\BackendGenerators.csproj",
         "projectName": "BackendGenerators",
-        "projectPath": "C:\\Users\\matheus.giovani\\Documents\\BackendGenerators\\BackendGenerators.csproj",
-        "packagesPath": "C:\\Users\\matheus.giovani\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\matheus.giovani\\Documents\\BackendGenerators\\obj\\",
+        "projectPath": "C:\\Users\\mpereira\\Desktop\\Estudos\\C#\\BackendGenerators\\BackendGenerators.csproj",
+        "packagesPath": "C:\\Users\\mpereira\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mpereira\\Desktop\\Estudos\\C#\\BackendGenerators\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\matheus.giovani\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mpereira\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,16 +45,12 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
-            "Mapster": {
-              "target": "Package",
-              "version": "[7.4.0, )"
-            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.9, )"
@@ -114,7 +111,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
