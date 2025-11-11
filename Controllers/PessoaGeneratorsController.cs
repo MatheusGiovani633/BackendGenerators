@@ -2,7 +2,6 @@
 using BackendGenerators.Models;
 using BackendGenerators.Services;
 using Microsoft.AspNetCore.Mvc;
-using BackendGenerators.Models.Dtos;
 public class GeneratorsController : ControllerBase
 {
     private readonly IPessoaService _pessoaService;
@@ -62,31 +61,7 @@ public class GeneratorsController : ControllerBase
         if (pessoas.Count == 0)
             return NoContent();
 
-        var pessoasDto = pessoas.Select(p => new PessoaDto
-        {
-            Cod_pessoa = p.Cod_Pessoa,
-            Identificador = p.Identificador,
-            Nome = p.Nome,
-            Razaosocial = p.Razaosocial,
-            Email = p.Email,
-            Telefone = p.Telefone,
-            Celular = p.Celular,
-            Celular2 = p.Celular2,
-            DataNascimento = p.DataNascimento,
-            Cpf = p.Cpf,
-            Cnpj = p.Cnpj,
-            Sexo = p.Sexo,
-            Cep = p.Cep,
-            Logradouro = p.Logradouro,
-            Numero = p.Numero,
-            Cidade = p.Cidade,
-            Estado = p.Estado,
-            Complemento = p.Complemento,
-            Bairro = p.Bairro,
-            InscricaoEstadual = p.InscricaoEstadual,
-            InscricaoMunicipal = p.InscricaoMunicipal,
-            TipoCNPJ = p.TipoCNPJ
-        }).ToList();
+        var pessoasDto = pessoas.Select(p => Pessoa.ToPessoaDto(p)).ToList();
         return Ok(pessoasDto);
     }
 
@@ -119,26 +94,7 @@ public class GeneratorsController : ControllerBase
         if (medicos.Count == 0)
             return NoContent();
 
-        var medicosDto = medicos.Select(m => new MedicoDto
-        {
-            CRM = m.CRM,
-            Identificador = m.Pessoa.Identificador,
-            Nome = m.Pessoa.Nome,
-            Email = m.Pessoa.Email,
-            Telefone = m.Pessoa.Telefone,
-            Celular = m.Pessoa.Celular,
-            Celular2 = m.Pessoa.Celular2,
-            DataNascimento = m.Pessoa.DataNascimento,
-            Cpf = m.Pessoa.Cpf,
-            Sexo = m.Pessoa.Sexo,
-            Cep = m.Pessoa.Cep,
-            Logradouro = m.Pessoa.Logradouro,
-            Numero = m.Pessoa.Numero,
-            Cidade = m.Pessoa.Cidade,
-            Estado = m.Pessoa.Estado,
-            Complemento = m.Pessoa.Complemento,
-            Bairro = m.Pessoa.Bairro,
-        }).ToList();
+        var medicosDto = medicos.Select(m => Pessoa.ToMedicoDto(m.Pessoa)).ToList();
         return Ok(medicosDto);
         
     }
