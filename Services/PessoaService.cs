@@ -59,11 +59,11 @@ namespace BackendGenerators.Services
 
         public async Task<Pessoa> GetPessoaAleatoriaTipoAsync(string tipo)
         {
-            if (string.Equals(tipo, "fisica", StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(tipo, "fisica", StringComparison.OrdinalIgnoreCase) || string.Equals(tipo, "Fisica", StringComparison.OrdinalIgnoreCase))
             {
                 return await _repo.GetPessoaAleatoriaFisicaAsync(tipo);
             }
-            if (string.Equals(tipo, "juridica", StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(tipo, "juridica", StringComparison.OrdinalIgnoreCase) || string.Equals(tipo, "Juridica", StringComparison.OrdinalIgnoreCase))
             {
                 return await _repo.GetPessoaAleatoriaJuridicaAsync(tipo);
             }
