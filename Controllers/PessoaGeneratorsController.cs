@@ -18,51 +18,12 @@ public class GeneratorsController : ControllerBase
         var pessoa = await _pessoaService.CriarPessoaAleatoriaAsync(tipo);
         if (tipo == "Fisica" || tipo == "fisica")
         {
-            var pessoaFisicaDto = new PessoaFisicaDto
-            {
-                Identificador = pessoa.Identificador,
-                Nome = pessoa.Nome,
-                Email = pessoa.Email,
-                Telefone = pessoa.Telefone,
-                Celular = pessoa.Celular,
-                Celular2 = pessoa.Celular2,
-                DataNascimento = pessoa.DataNascimento,
-                Cpf = pessoa.Cpf,
-                Sexo = pessoa.Sexo,
-                Cep = pessoa.Cep,
-                Logradouro = pessoa.Logradouro,
-                Numero = pessoa.Numero,
-                Cidade = pessoa.Cidade,
-                Estado = pessoa.Estado,
-                Complemento = pessoa.Complemento,
-                Bairro = pessoa.Bairro,
-            };
+            var pessoaFisicaDto = Pessoa.ToPessoaFisicaDto(pessoa);
             return Ok(pessoaFisicaDto);
         }
         else if (tipo == "Juridica" || tipo == "juridica")
         {
-            var pessoaJuridicaDto = new PessoaJuridicaDto
-            {
-                Identificador = pessoa.Identificador,
-                Nome = pessoa.Nome,
-                Razaosocial = pessoa.Razaosocial,
-                Email = pessoa.Email,
-                Telefone = pessoa.Telefone,
-                Celular = pessoa.Celular,
-                Celular2 = pessoa.Celular2,
-                DataNascimento = pessoa.DataNascimento,
-                Cnpj = pessoa.Cnpj,
-                Cep = pessoa.Cep,
-                Logradouro = pessoa.Logradouro,
-                Numero = pessoa.Numero,
-                Cidade = pessoa.Cidade,
-                Estado = pessoa.Estado,
-                Complemento = pessoa.Complemento,
-                Bairro = pessoa.Bairro,
-                InscricaoEstadual = pessoa.InscricaoEstadual,
-                InscricaoMunicipal = pessoa.InscricaoMunicipal,
-                TipoCNPJ = pessoa.TipoCNPJ,
-            };
+            var pessoaJuridicaDto = Pessoa.ToPessoaJuridicaDto(pessoa);
             return Ok(pessoaJuridicaDto);
         }
         else
@@ -77,51 +38,12 @@ public class GeneratorsController : ControllerBase
         var pessoa = await _pessoaService.GetPessoaAleatoriaTipoAsync(tipo);
         if (tipo == "Fisica" || tipo == "fisica")
         {
-            var pessoaFisicaDto = new PessoaFisicaDto
-            {
-                Identificador = pessoa.Identificador,
-                Nome = pessoa.Nome,
-                Email = pessoa.Email,
-                Telefone = pessoa.Telefone,
-                Celular = pessoa.Celular,
-                Celular2 = pessoa.Celular2,
-                DataNascimento = pessoa.DataNascimento,
-                Cpf = pessoa.Cpf,
-                Sexo = pessoa.Sexo,
-                Cep = pessoa.Cep,
-                Logradouro = pessoa.Logradouro,
-                Numero = pessoa.Numero,
-                Cidade = pessoa.Cidade,
-                Estado = pessoa.Estado,
-                Complemento = pessoa.Complemento,
-                Bairro = pessoa.Bairro,
-            };
+            var pessoaFisicaDto = Pessoa.ToPessoaFisicaDto(pessoa);
             return Ok(pessoaFisicaDto);
         }
         else if (tipo == "Juridica" || tipo == "juridica")
         {
-            var pessoaJuridicaDto = new PessoaJuridicaDto
-            {
-                Identificador = pessoa.Identificador,
-                Nome = pessoa.Nome,
-                Razaosocial = pessoa.Razaosocial,
-                Email = pessoa.Email,
-                Telefone = pessoa.Telefone,
-                Celular = pessoa.Celular,
-                Celular2 = pessoa.Celular2,
-                DataNascimento = pessoa.DataNascimento,
-                Cnpj = pessoa.Cnpj,
-                Cep = pessoa.Cep,
-                Logradouro = pessoa.Logradouro,
-                Numero = pessoa.Numero,
-                Cidade = pessoa.Cidade,
-                Estado = pessoa.Estado,
-                Complemento = pessoa.Complemento,
-                Bairro = pessoa.Bairro,
-                InscricaoEstadual = pessoa.InscricaoEstadual,
-                InscricaoMunicipal = pessoa.InscricaoMunicipal,
-                TipoCNPJ = pessoa.TipoCNPJ,
-            };
+            var pessoaJuridicaDto = Pessoa.ToPessoaJuridicaDto(pessoa);
             return Ok(pessoaJuridicaDto);
         }
         else
@@ -163,68 +85,26 @@ public class GeneratorsController : ControllerBase
             Bairro = p.Bairro,
             InscricaoEstadual = p.InscricaoEstadual,
             InscricaoMunicipal = p.InscricaoMunicipal,
-            TipoCNPJ = p.TipoCNPJ,
+            TipoCNPJ = p.TipoCNPJ
         }).ToList();
         return Ok(pessoasDto);
     }
 
-    [HttpGet("pessoaFisica/{id}")]
+    [HttpGet("pessoa/{id:int}")]
     public async Task<ActionResult<Pessoa>> GetPessoaId(int id)
     {
         var pessoa = await _pessoaService.GetPessoaByIdAsync(id);
         if (pessoa == null) return NotFound("O ID informado não existe");
-        var pessoaDto = new PessoaDto
-        {
-            Cod_pessoa = pessoa.Cod_Pessoa,
-            Identificador = pessoa.Identificador,
-            Nome = pessoa.Nome,
-            Razaosocial = pessoa.Razaosocial,
-            Email = pessoa.Email,
-            Telefone = pessoa.Telefone,
-            Celular = pessoa.Celular,
-            Celular2 = pessoa.Celular2,
-            DataNascimento = pessoa.DataNascimento,
-            Cpf = pessoa.Cpf,
-            Cnpj = pessoa.Cnpj,
-            Sexo = pessoa.Sexo,
-            Cep = pessoa.Cep,
-            Logradouro = pessoa.Logradouro,
-            Numero = pessoa.Numero,
-            Cidade = pessoa.Cidade,
-            Estado = pessoa.Estado,
-            Complemento = pessoa.Complemento,
-            Bairro = pessoa.Bairro,
-            InscricaoEstadual = pessoa.InscricaoEstadual,
-            InscricaoMunicipal = pessoa.InscricaoMunicipal,
-            TipoCNPJ = pessoa.TipoCNPJ,
-        };
+        var pessoaDto = Pessoa.ToPessoaDto(pessoa);
         return Ok(pessoaDto);
     }
+
     [HttpPost("medico")]
     public async Task<ActionResult<Medico>> CriarMedicoAleatorio()
     {
         var medico = await _pessoaService.CriarMedicoAleatorioAsync();
         if (medico == null) return BadRequest("Erro ao criar médico.");
-        var medicoDto = new MedicoDto
-        {
-            CRM = medico.CRM,
-            Identificador = medico.Pessoa.Identificador,
-            Nome = medico.Pessoa.Nome,
-            Email = medico.Pessoa.Email,
-            Telefone = medico.Pessoa.Telefone,
-            Celular = medico.Pessoa.Celular,
-            Celular2 = medico.Pessoa.Celular2,
-            DataNascimento = medico.Pessoa.DataNascimento,
-            Cpf = medico.Pessoa.Cpf,
-            Sexo = medico.Pessoa.Sexo,
-            Cep = medico.Pessoa.Cep,
-            Logradouro = medico.Pessoa.Logradouro,
-            Numero = medico.Pessoa.Numero,
-            Cidade = medico.Pessoa.Cidade,
-            Estado = medico.Pessoa.Estado,
-            Complemento = medico.Pessoa.Complemento,
-            Bairro = medico.Pessoa.Bairro,
-        };
+        var medicoDto = Pessoa.ToMedicoDto(medico.Pessoa);
         return Ok(medicoDto);
     }
 
@@ -260,6 +140,7 @@ public class GeneratorsController : ControllerBase
             Bairro = m.Pessoa.Bairro,
         }).ToList();
         return Ok(medicosDto);
+        
     }
 
 }
