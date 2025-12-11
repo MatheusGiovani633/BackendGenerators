@@ -12,7 +12,6 @@ namespace BackendGenerators.Services
         {
             _repo = repo;
         }
-
         public async Task<Pessoa> CriarPessoaAleatoriaAsync(string tipo)
         {
             if (tipo == null)
@@ -74,6 +73,7 @@ namespace BackendGenerators.Services
         {
             return await _repo.GetPessoaByIdAsync(id);
         }
+        
 
     }
 }

@@ -33,4 +33,37 @@ namespace BackendGenerators.Models
         public string Observacoes { get; set; }
 
     }
+    public static class ReceitaExtensions
+    {
+        public static ReceitaDto ToReceitaDto(Receita receita)
+        {
+            return new ReceitaDto
+            {
+                Cod_Receita = receita.Cod_Receita,
+                Cod_Pessoa = receita.Cod_Pessoa,
+                Cod_OrdemServicocaixa = receita.Cod_OrdemServicocaixa,
+                Cod_Vendedor = receita.Cod_Vendedor,
+                Cod_Medico = receita.Cod_Medico,
+                DataEmissao = receita.DataEmissao,
+                DataPrescricao = receita.DataPrescricao,
+                DataAviamento = receita.DataAviamento,
+                LenteOD = receita.LenteOD,
+                LenteOE = receita.LenteOE,
+                Altura = receita.Altura,
+                esfericoOD = receita.esfericoOD,
+                esfericoOE = receita.esfericoOE,
+                cilindricoOD = receita.cilindricoOD,
+                cilindricoOE = receita.cilindricoOE,
+                eixoOD = receita.eixoOD,
+                eixoOE = receita.eixoOE,
+                AdicaoOD = receita.AdicaoOD,
+                AdicaoOE = receita.AdicaoOE,
+                DNPOD = receita.DNPOD,
+                DNPOE = receita.DNPOE,
+                COOD = receita.COOD,
+                COOE = receita.COOE,
+                Observacoes = receita.Observacoes
+            };
+        }
+    }
 }

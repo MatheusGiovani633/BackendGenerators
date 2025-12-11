@@ -20,5 +20,4 @@ namespace BackendGenerators.Data
                 .HasForeignKey<Medico>(m => m.Cod_Pessoa);
         }
     }
-
 }

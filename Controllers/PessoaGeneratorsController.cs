@@ -5,10 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 public class GeneratorsController : ControllerBase
 {
     private readonly IPessoaService _pessoaService;
+    private readonly IProcessService _processService;
 
-    public GeneratorsController(IPessoaService pessoaService)
+    public GeneratorsController(IPessoaService pessoaService, IProcessService processService)
     {
         _pessoaService = pessoaService;
+        _processService = processService;
     }
 
     [HttpPost("pessoa/{tipo}")]
@@ -97,6 +99,13 @@ public class GeneratorsController : ControllerBase
         var medicosDto = medicos.Select(m => Pessoa.ToMedicoDto(m.Pessoa)).ToList();
         return Ok(medicosDto);
         
+    }
+    [HttpPost("receita")]
+    public async Task<ActionResult<Receita>> CriarReceitaAleatoria(int codPessoa, int codOrdemServicoCaixa, int codVendedor, int codMedico)
+    {
+        var receita = await _processService.CriarReceitaAleatoriaAsync(codPessoa, codOrdemServicoCaixa, codVendedor, codMedico);
+        if (receita == null) return BadRequest("Erro ao criar receita.");
+        return Ok(receita);
     }
 
 }

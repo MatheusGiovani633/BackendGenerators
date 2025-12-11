@@ -24,6 +24,12 @@ namespace BackendGenerators.Repository
             await _db.SaveChangesAsync();
             return pessoas;
         }
+        public async Task<Receita> CriarReceitaAleatoriaAsync(Receita receita)
+        {
+            _db.Receitas.Add(receita);
+            await _db.SaveChangesAsync();
+            return receita;
+        }
         public async Task<Medico> CriarMedicoAleatorioAsync(Medico medico)
         {
             _db.Medico.Add(medico);

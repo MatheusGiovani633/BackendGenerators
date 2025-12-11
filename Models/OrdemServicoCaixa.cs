@@ -34,6 +34,5 @@ namespace BackendGenerators.Models
         public double ValorDesconto { get; set; }
         public double ValorAcrescimo { get; set; }
         
-
     }
 }

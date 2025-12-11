@@ -31,6 +31,36 @@ namespace BackendGenerators.Helpers
                 TipoCNPJ = 0
             };
         }
+        public static Receita CriarReceita(int codPessoa, int codOrdemServicoCaixa, int codVendedor, int codMedico)
+        {
+            return new Receita
+            {
+                Cod_Pessoa = codPessoa,
+                Cod_OrdemServicocaixa = codOrdemServicoCaixa,
+                Cod_Vendedor = codVendedor,
+                Cod_Medico = codMedico,
+                DataEmissao = DateTime.Now,
+                DataPrescricao = DateTime.Now,
+                DataAviamento = DateTime.Now,
+                LenteOD = (decimal)(_random.NextDouble() * 10),
+                LenteOE = (decimal)(_random.NextDouble() * 10),
+                Altura = (decimal)(_random.NextDouble() * 10),
+                esfericoOD = (decimal)(_random.NextDouble() * 10),
+                esfericoOE = (decimal)(_random.NextDouble() * 10),
+                cilindricoOD = (decimal)(_random.NextDouble() * 10),
+                cilindricoOE = (decimal)(_random.NextDouble() * 10),
+                eixoOD = (decimal)(_random.NextDouble() * 180),
+                eixoOE = (decimal)(_random.NextDouble() * 180),
+                AdicaoOD = (decimal)(_random.NextDouble() * 5),
+                AdicaoOE = (decimal)(_random.NextDouble() * 5),
+                DNPOD = (decimal)(_random.NextDouble() * 80),
+                DNPOE = (decimal)(_random.NextDouble() * 80),
+                COOD = (decimal)(_random.NextDouble() * 10),
+                COOE = (decimal)(_random.NextDouble() * 10),
+                Observacoes = "Observação " + _random.Next(1, 1000)
+            };       
+        }
+
 
         public static Pessoa CriarJuridica()
         {
