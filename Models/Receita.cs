@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using BackendGenerators.Models.Dtos;
 namespace BackendGenerators.Models
 {
 
@@ -39,7 +40,6 @@ namespace BackendGenerators.Models
         {
             return new ReceitaDto
             {
-                Cod_Receita = receita.Cod_Receita,
                 Cod_Pessoa = receita.Cod_Pessoa,
                 Cod_OrdemServicocaixa = receita.Cod_OrdemServicocaixa,
                 Cod_Vendedor = receita.Cod_Vendedor,

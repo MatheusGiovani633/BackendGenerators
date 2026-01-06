@@ -18,7 +18,7 @@ public class ProcessGeneratorsController : ControllerBase
     {
         var pessoa = await _pessoaService.GetPessoaAleatoriaAsync();
         var vendedor = await _pessoaService.GetPessoaAleatoriaAsync();
-        var ordemServicoCaixa = 2; // Simulação de obtenção de uma OrdemServicoCaixa aleatória
+        var ordemServicoCaixa = 2; 
         var medico = await _pessoaService.GetMedicoAleatorioAsync();
 
         var receita = await _processService.CriarReceitaAleatoriaAsync(

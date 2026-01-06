@@ -100,12 +100,5 @@ public class GeneratorsController : ControllerBase
         return Ok(medicosDto);
         
     }
-    [HttpPost("receita")]
-    public async Task<ActionResult<Receita>> CriarReceitaAleatoria(int codPessoa, int codOrdemServicoCaixa, int codVendedor, int codMedico)
-    {
-        var receita = await _processService.CriarReceitaAleatoriaAsync(codPessoa, codOrdemServicoCaixa, codVendedor, codMedico);
-        if (receita == null) return BadRequest("Erro ao criar receita.");
-        return Ok(receita);
-    }
 
 }
