@@ -131,6 +131,11 @@ namespace BackendGenerators.Models
                 TipoCNPJ = pessoa.TipoCNPJ
             };
         }
+
+        public static implicit operator List<object>(Pessoa v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }
