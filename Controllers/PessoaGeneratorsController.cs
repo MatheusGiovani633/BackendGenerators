@@ -2,6 +2,9 @@
 using BackendGenerators.Models;
 using BackendGenerators.Services;
 using Microsoft.AspNetCore.Mvc;
+
+[ApiController]
+[Route("api/[controller]")]
 public class GeneratorsController : ControllerBase
 {
     private readonly IPessoaService _pessoaService;

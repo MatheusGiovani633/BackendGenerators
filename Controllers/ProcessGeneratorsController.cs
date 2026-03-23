@@ -2,6 +2,8 @@
 using BackendGenerators.Models;
 using BackendGenerators.Services;
 using Microsoft.AspNetCore.Mvc;
+[ApiController]
+[Route("api/[controller]")]
 public class ProcessGeneratorsController : ControllerBase
 {
     private readonly IProcessService _processService;
