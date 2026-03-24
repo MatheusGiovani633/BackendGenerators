@@ -10,6 +10,7 @@ namespace BackendGenerators.Data
         public DbSet<Receita> Receitas { get; set; }
         public DbSet<OrdemServicoCaixa> OrdemServicoCaixa { get; set; }
         public DbSet<Medico> Medico { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

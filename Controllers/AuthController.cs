@@ -16,7 +16,14 @@ public class AuthController : ControllerBase
     {
         _configuration = configuration;
     }
+    [HttpPost("register")]
+    public IActionResult Register([FromBody] LoginRequest request)
+    {
+        // TODO: implementar lógica de registro
+        return Ok("Usuário registrado com sucesso.");
+    }
 
+    
     [HttpPost("login")]
     public IActionResult Login([FromBody] LoginRequest request)
     {
