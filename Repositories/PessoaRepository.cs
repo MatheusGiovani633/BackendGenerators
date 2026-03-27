@@ -39,11 +39,22 @@ namespace BackendGenerators.Repository
                 .Include(m => m.Pessoa)
                 .FirstOrDefaultAsync(m => m.Cod_Medico == medico.Cod_Medico);
         }
-        public async Task<List<Pessoa>> GetPessoaAleatoriaAsync()
+        public async Task<(List<Pessoa> Items, int TotalItems)> GetPessoaAleatoriaAsync(int page, int pageSize)
         {
-            return await _db.Pessoas.ToListAsync();
-            
+            var query = _db.Pessoas
+                .AsNoTracking();
+
+            var totalItems = await query.CountAsync();
+
+            var items = await query
+                .OrderBy(p => p.Cod_Pessoa)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return (items, totalItems);
         }
+        
         public async Task<List<Medico>> GetMedicoAleatorioAsync()
         {
             return await _db.Medico

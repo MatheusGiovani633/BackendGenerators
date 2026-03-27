@@ -51,9 +51,10 @@ namespace BackendGenerators.Services
             return await _repo.GetMedicoAleatorioAsync();
         }
         
-        public async Task<List<Pessoa>> GetPessoaAleatoriaAsync()
+        public async Task<List<Pessoa>> GetPessoaAleatoriaAsync(int page, int pageSize)
         {
-            return await _repo.GetPessoaAleatoriaAsync();
+            var result = await _repo.GetPessoaAleatoriaAsync(page, pageSize);
+            return result.Items;
         }  
 
         public async Task<Pessoa> GetPessoaAleatoriaTipoAsync(string tipo)

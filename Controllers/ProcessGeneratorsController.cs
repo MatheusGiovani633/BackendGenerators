@@ -18,8 +18,8 @@ public class ProcessGeneratorsController : ControllerBase
     [HttpPost("receita")]
     public async Task<ActionResult<Receita>> CriarReceitaAleatoria()
     {
-        var pessoa = await _pessoaService.GetPessoaAleatoriaAsync();
-        var vendedor = await _pessoaService.GetPessoaAleatoriaAsync();
+        var pessoa = await _pessoaService.GetPessoaAleatoriaAsync(page: 1, pageSize: 10);
+        var vendedor = await _pessoaService.GetPessoaAleatoriaAsync(page: 1, pageSize: 10);
         var ordemServicoCaixa = Random.Shared.Next(1, 1000);
         var medico = await _pessoaService.GetMedicoAleatorioAsync();
 

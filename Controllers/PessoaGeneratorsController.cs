@@ -57,9 +57,10 @@ public class GeneratorsController : ControllerBase
     }
 
     [HttpGet("pessoa")]
-    public async Task<ActionResult<List<Pessoa>>> GetPessoaAleatoria()
-    {
-        var pessoas = await _pessoaService.GetPessoaAleatoriaAsync();
+    public async Task<ActionResult<List<Pessoa>>> GetPessoaAleatoria([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
+    {   
+        var pessoas = await _pessoaService.GetPessoaAleatoriaAsync(page, pageSize);
+
         if (pessoas == null)
             return StatusCode(500, "Erro ao buscar pessoas.");
 

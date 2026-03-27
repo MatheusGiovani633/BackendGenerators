@@ -189,3 +189,4 @@ C:\Estudos\BackendGenerators\obj\Debug\net8.0\refint\BackendGenerators.dll
 C:\Estudos\BackendGenerators\obj\Debug\net8.0\BackendGenerators.pdb
 C:\Estudos\BackendGenerators\obj\Debug\net8.0\BackendGenerators.genruntimeconfig.cache
 C:\Estudos\BackendGenerators\obj\Debug\net8.0\ref\BackendGenerators.dll
+C:\Estudos\BackendGenerators\bin\Debug\net8.0\BCrypt.Net-Next.dll
