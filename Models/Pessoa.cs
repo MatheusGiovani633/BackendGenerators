@@ -31,6 +31,7 @@ namespace BackendGenerators.Models
         public string InscricaoEstadual { get; set; }
         public string InscricaoMunicipal { get; set; }
         public int TipoCNPJ { get; set; }
+        public virtual ICollection<Receita> Receitas { get; set; }
 
         public static PessoaDto ToPessoaDto(Pessoa pessoa)
         {

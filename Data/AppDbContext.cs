@@ -19,6 +19,12 @@ namespace BackendGenerators.Data
                 .HasOne(m => m.Pessoa)
                 .WithOne(p => p.Medico)
                 .HasForeignKey<Medico>(m => m.Cod_Pessoa);
+
+            modelBuilder.Entity<Receita>()
+                 .HasOne(r => r.Pessoa)
+                 .WithMany(p => p.Receitas)
+                 .HasForeignKey(r => r.Cod_Pessoa)
+                 .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

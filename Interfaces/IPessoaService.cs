@@ -1,6 +1,7 @@
 namespace BackendGenerators.Services
 {
     using System.Collections.Generic;
+    using BackendGenerators.Enums;
     using BackendGenerators.Models;
     public interface IPessoaService
     {

@@ -2,7 +2,7 @@
 using BackendGenerators.Models;
 using BackendGenerators.Services;
 using Microsoft.AspNetCore.Mvc;
-
+using BackendGenerators.Enums;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -18,48 +18,43 @@ public class GeneratorsController : ControllerBase
     }
 
     [HttpPost("pessoa/{tipo}")]
-    public async Task<ActionResult<Pessoa>> CriarPessoaAleatoria(Tipo tipo)
+    public async Task<ActionResult<Pessoa>> CriarPessoaAleatoria(string tipo)
     {
-        var pessoa = await _pessoaService.CriarPessoaAleatoriaAsync(tipo);
-        if (tipo == Tipo.Fisica)
-        {
-            var pessoaFisicaDto = Pessoa.ToPessoaFisicaDto(pessoa);
-            return Ok(pessoaFisicaDto);
-        }
-        else if (tipo == Tipo.Juridica)
-        {
-            var pessoaJuridicaDto = Pessoa.ToPessoaJuridicaDto(pessoa);
-            return Ok(pessoaJuridicaDto);
-        }
-        else
+        if (!Enum.TryParse<Tipo>(tipo, true, out var tipoEnum))
         {
             return BadRequest("Tipo inválido. Use 'fisica' ou 'juridica'.");
+
         }
+        var pessoa = await _pessoaService.CriarPessoaAleatoriaAsync(tipoEnum);
+        return tipoEnum switch
+        {
+            Tipo.Fisica => Ok(Pessoa.ToPessoaFisicaDto(pessoa)),
+            Tipo.Juridica => Ok(Pessoa.ToPessoaJuridicaDto(pessoa)),
+            _ => BadRequest("Tipo inválido. Use 'fisica' ou 'juridica'.")
+        };
     }
 
     [HttpGet("pessoa/{tipo}")]
-    public async Task<ActionResult<Pessoa>> GetPessoaTipoAleatoria(Tipo tipo)
+    public async Task<ActionResult<Pessoa>> GetPessoaTipoAleatoria(string tipo)
     {
-        var pessoa = await _pessoaService.GetPessoaAleatoriaTipoAsync(tipo);
-        if (tipo == Tipo.Fisica)
-        {
-            var pessoaFisicaDto = Pessoa.ToPessoaFisicaDto(pessoa);
-            return Ok(pessoaFisicaDto);
-        }
-        else if (tipo == Tipo.Juridica)
-        {
-            var pessoaJuridicaDto = Pessoa.ToPessoaJuridicaDto(pessoa);
-            return Ok(pessoaJuridicaDto);
-        }
-        else
+
+        if (!Enum.TryParse<Tipo>(tipo, true, out var tipoEnum))
         {
             return BadRequest("Tipo inválido. Use 'fisica' ou 'juridica'.");
+
         }
+        var pessoa = await _pessoaService.GetPessoaAleatoriaTipoAsync(tipoEnum);
+        return tipoEnum switch
+        {
+            Tipo.Fisica => Ok(Pessoa.ToPessoaFisicaDto(pessoa)),
+            Tipo.Juridica => Ok(Pessoa.ToPessoaJuridicaDto(pessoa)),
+            _ => BadRequest("Tipo inválido. Use 'fisica' ou 'juridica'.")
+        };
     }
 
     [HttpGet("pessoa")]
     public async Task<ActionResult<List<Pessoa>>> GetPessoaAleatoria([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
-    {   
+    {
         var pessoas = await _pessoaService.GetPessoaAleatoriaAsync(page, pageSize);
 
         if (pessoas == null)
@@ -103,7 +98,7 @@ public class GeneratorsController : ControllerBase
 
         var medicosDto = medicos.Select(m => Pessoa.ToMedicoDto(m.Pessoa)).ToList();
         return Ok(medicosDto);
-        
+
     }
 
 }

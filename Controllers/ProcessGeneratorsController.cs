@@ -2,6 +2,7 @@
 using BackendGenerators.Models;
 using BackendGenerators.Services;
 using Microsoft.AspNetCore.Mvc;
+using BackendGenerators.Enums;
 [ApiController]
 [Route("api/[controller]")]
 public class ProcessGeneratorsController : ControllerBase
@@ -23,15 +24,15 @@ public class ProcessGeneratorsController : ControllerBase
         var ordemServicoCaixa = Random.Shared.Next(1, 1000);
         var medico = await _pessoaService.GetMedicoAleatorioAsync();
 
-        if(!pessoa.Any())
+        if (!pessoa.Any())
         {
-            pessoa = new List<Pessoa> { await _pessoaService.CriarPessoaAleatoriaAsync("Fisica") }; 
+            pessoa = new List<Pessoa> { await _pessoaService.CriarPessoaAleatoriaAsync(Tipo.Fisica) };
         }
-        if(!vendedor.Any())
+        if (!vendedor.Any())
         {
-            vendedor = new List<Pessoa> { await _pessoaService.CriarPessoaAleatoriaAsync("Fisica") }; 
+            vendedor = new List<Pessoa> { await _pessoaService.CriarPessoaAleatoriaAsync(Tipo.Fisica) };
         }
-        if(!medico.Any())
+        if (!medico.Any())
         {
             medico = new List<Medico> { await _pessoaService.CriarMedicoAleatorioAsync() };
         }
@@ -45,6 +46,21 @@ public class ProcessGeneratorsController : ControllerBase
         if (receita == null) return BadRequest("Erro ao criar receita.");
         return Ok(receita);
     }
-    
+    [HttpGet("receita")]
+    public async Task<ActionResult<Receita>> ProcurarReceita([FromQuery] string tipo, [FromQuery] string nome)
+    {
+        if (!Enum.TryParse<Tipo>(tipo, true, out var tipoEnum))
+        {
+            return BadRequest("Tipo inválido. Use 'fisica' ou 'juridica'.");
+        }
+        return tipoEnum switch
+        {
+            Tipo.Fisica => Ok(await _processService.ProcurarReceitaAsync(Tipo.Fisica, nome)),
+            Tipo.Juridica => Ok(await _processService.ProcurarReceitaAsync(Tipo.Juridica, nome)),
+            _ => BadRequest("Tipo inválido. Use 'fisica' ou 'juridica'.")
+        };
+    }
+
+
 
 }

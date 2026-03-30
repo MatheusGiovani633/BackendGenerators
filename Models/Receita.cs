@@ -9,7 +9,13 @@ namespace BackendGenerators.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Cod_Receita { get; set; }
+
+        [Required]
         public int Cod_Pessoa { get; set; }
+
+        [ForeignKey("Cod_Pessoa")]
+        public virtual Pessoa Pessoa { get; set; }
+        
         public int Cod_OrdemServicocaixa { get; set; }
         public int Cod_Vendedor { get; set; }
         public int Cod_Medico { get; set; }

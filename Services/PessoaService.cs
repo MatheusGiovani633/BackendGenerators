@@ -4,6 +4,7 @@ namespace BackendGenerators.Services
     using BackendGenerators.Repository;
     using BackendGenerators.Helpers;
     using BackendGenerators.Models;
+    using BackendGenerators.Enums;
     public class PessoaService : IPessoaService
     {
         private readonly PessoaRepository _repo;

@@ -3,7 +3,7 @@ namespace BackendGenerators.Repository
     using BackendGenerators.Data;
     using BackendGenerators.Models;
     using Microsoft.EntityFrameworkCore;
-
+    using BackendGenerators.Enums;
     public class PessoaRepository
     {
         private readonly AppDbContext _db;

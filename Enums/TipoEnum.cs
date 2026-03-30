@@ -1,5 +1,8 @@
-public enum Tipo
+namespace BackendGenerators.Enums
 {
-    Fisica,
-    Juridica
+    public enum Tipo
+    {
+        Fisica = 1,
+        Juridica = 2
+    }
 }
