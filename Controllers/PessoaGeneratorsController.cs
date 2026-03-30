@@ -3,6 +3,7 @@ using BackendGenerators.Models;
 using BackendGenerators.Services;
 using Microsoft.AspNetCore.Mvc;
 
+
 [ApiController]
 [Route("api/[controller]")]
 public class GeneratorsController : ControllerBase
@@ -17,15 +18,15 @@ public class GeneratorsController : ControllerBase
     }
 
     [HttpPost("pessoa/{tipo}")]
-    public async Task<ActionResult<Pessoa>> CriarPessoaAleatoria(string tipo)
+    public async Task<ActionResult<Pessoa>> CriarPessoaAleatoria(Tipo tipo)
     {
         var pessoa = await _pessoaService.CriarPessoaAleatoriaAsync(tipo);
-        if (tipo == "Fisica" || tipo == "fisica")
+        if (tipo == Tipo.Fisica)
         {
             var pessoaFisicaDto = Pessoa.ToPessoaFisicaDto(pessoa);
             return Ok(pessoaFisicaDto);
         }
-        else if (tipo == "Juridica" || tipo == "juridica")
+        else if (tipo == Tipo.Juridica)
         {
             var pessoaJuridicaDto = Pessoa.ToPessoaJuridicaDto(pessoa);
             return Ok(pessoaJuridicaDto);
@@ -37,15 +38,15 @@ public class GeneratorsController : ControllerBase
     }
 
     [HttpGet("pessoa/{tipo}")]
-    public async Task<ActionResult<Pessoa>> GetPessoaTipoAleatoria(string tipo)
+    public async Task<ActionResult<Pessoa>> GetPessoaTipoAleatoria(Tipo tipo)
     {
         var pessoa = await _pessoaService.GetPessoaAleatoriaTipoAsync(tipo);
-        if (tipo == "Fisica" || tipo == "fisica")
+        if (tipo == Tipo.Fisica)
         {
             var pessoaFisicaDto = Pessoa.ToPessoaFisicaDto(pessoa);
             return Ok(pessoaFisicaDto);
         }
-        else if (tipo == "Juridica" || tipo == "juridica")
+        else if (tipo == Tipo.Juridica)
         {
             var pessoaJuridicaDto = Pessoa.ToPessoaJuridicaDto(pessoa);
             return Ok(pessoaJuridicaDto);

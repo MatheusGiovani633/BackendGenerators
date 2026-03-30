@@ -39,8 +39,8 @@ namespace BackendGenerators.Repository
                 .Include(m => m.Pessoa)
                 .FirstOrDefaultAsync(m => m.Cod_Medico == medico.Cod_Medico);
         }
-        public async Task<(List<Pessoa> Items, int TotalItems)> GetPessoaAleatoriaAsync(int page, int pageSize)
-        {
+        public async Task<(List<Pessoa> Items, int TotalItems)> GetPessoaAleatoriaAsync(int page, int pageSize, Tipo tipo)
+        { 
             var query = _db.Pessoas
                 .AsNoTracking();
 
@@ -62,7 +62,7 @@ namespace BackendGenerators.Repository
                 .AsNoTracking()
                 .ToListAsync();
         }
-        public async Task<Pessoa> GetPessoaAleatoriaFisicaAsync(string tipo)
+        public async Task<Pessoa> GetPessoaAleatoriaFisicaAsync(Tipo tipo)
         {
             return await _db.Pessoas
                 .Where(p => p.Cpf != null)
@@ -70,7 +70,7 @@ namespace BackendGenerators.Repository
                 .OrderBy(p => EF.Functions.Random())
                 .FirstOrDefaultAsync();
         }
-        public async Task<Pessoa> GetPessoaAleatoriaJuridicaAsync(string tipo)
+        public async Task<Pessoa> GetPessoaAleatoriaJuridicaAsync(Tipo tipo)
         {
             return await _db.Pessoas
                 .Where(p => p.Cnpj != null)

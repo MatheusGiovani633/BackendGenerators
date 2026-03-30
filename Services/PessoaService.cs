@@ -12,19 +12,15 @@ namespace BackendGenerators.Services
         {
             _repo = repo;
         }
-        public async Task<Pessoa> CriarPessoaAleatoriaAsync(string tipo)
+        public async Task<Pessoa> CriarPessoaAleatoriaAsync(Tipo tipo)
         {
-            if (tipo == null)
-            {
-                throw new ArgumentNullException("Tipo não pode ser nulo");
-            }
-            if (string.Equals(tipo, "fisica", StringComparison.OrdinalIgnoreCase) || string.Equals(tipo, "Fisica", StringComparison.OrdinalIgnoreCase))
+            if (tipo == Tipo.Fisica)
             {
                 var pessoaFisica = Helpers.CriarFisica();
                 await _repo.CriarPessoaAleatoriaFisicaAsync(pessoaFisica);
                 return pessoaFisica;
             }
-            if (string.Equals(tipo, "juridica", StringComparison.OrdinalIgnoreCase) || string.Equals(tipo, "Juridica", StringComparison.OrdinalIgnoreCase))
+            if (tipo == Tipo.Juridica)
             {
                 var pessoaJuridica = Helpers.CriarJuridica();
                 await _repo.CriarPessoaAleatoriaJuridicaAsync(pessoaJuridica);
@@ -53,19 +49,19 @@ namespace BackendGenerators.Services
         
         public async Task<List<Pessoa>> GetPessoaAleatoriaAsync(int page, int pageSize)
         {
-            var result = await _repo.GetPessoaAleatoriaAsync(page, pageSize);
+            var result = await _repo.GetPessoaAleatoriaAsync(page, pageSize, Tipo.Fisica);
             return result.Items;
         }  
 
-        public async Task<Pessoa> GetPessoaAleatoriaTipoAsync(string tipo)
+        public async Task<Pessoa> GetPessoaAleatoriaTipoAsync(Tipo tipo)
         {
-            if (string.Equals(tipo, "fisica", StringComparison.OrdinalIgnoreCase) || string.Equals(tipo, "Fisica", StringComparison.OrdinalIgnoreCase))
+            if (tipo == Tipo.Fisica)
             {
-                return await _repo.GetPessoaAleatoriaFisicaAsync(tipo);
+                return await _repo.GetPessoaAleatoriaFisicaAsync(Tipo.Fisica);
             }
-            if (string.Equals(tipo, "juridica", StringComparison.OrdinalIgnoreCase) || string.Equals(tipo, "Juridica", StringComparison.OrdinalIgnoreCase))
+            if (tipo == Tipo.Juridica)
             {
-                return await _repo.GetPessoaAleatoriaJuridicaAsync(tipo);
+                return await _repo.GetPessoaAleatoriaJuridicaAsync(Tipo.Juridica);
             }
             return null;
         }
