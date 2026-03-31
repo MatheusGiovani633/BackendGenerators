@@ -24,8 +24,8 @@ namespace BackendGenerators.Repository
             return await _db.Receitas
                 .Include(r => r.Pessoa)
                 .FirstOrDefaultAsync(r =>
-                    tipo == Enums.Tipo.Fisica && r.Pessoa.Nome.Contains(nome) ||
-                    tipo == Enums.Tipo.Juridica && r.Pessoa.Nome.Contains(nome)
+                    tipo == Tipo.Fisica && r.Pessoa.Nome.Contains(nome) ||
+                    tipo == Tipo.Juridica && r.Pessoa.Nome.Contains(nome)
                 );
         }
     }

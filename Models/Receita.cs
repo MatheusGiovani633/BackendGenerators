@@ -15,7 +15,7 @@ namespace BackendGenerators.Models
 
         [ForeignKey("Cod_Pessoa")]
         public virtual Pessoa Pessoa { get; set; }
-        
+
         public int Cod_OrdemServicocaixa { get; set; }
         public int Cod_Vendedor { get; set; }
         public int Cod_Medico { get; set; }
@@ -38,10 +38,6 @@ namespace BackendGenerators.Models
         public decimal COOD { get; set; }
         public decimal COOE { get; set; }
         public string Observacoes { get; set; }
-
-    }
-    public static class ReceitaExtensions
-    {
         public static ReceitaDto ToReceitaDto(Receita receita)
         {
             return new ReceitaDto
@@ -72,4 +68,6 @@ namespace BackendGenerators.Models
             };
         }
     }
+
 }
+

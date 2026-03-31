@@ -55,9 +55,10 @@ public class ProcessGeneratorsController : ControllerBase
         }
         return tipoEnum switch
         {
-            Tipo.Fisica => Ok(await _processService.ProcurarReceitaAsync(Tipo.Fisica, nome)),
-            Tipo.Juridica => Ok(await _processService.ProcurarReceitaAsync(Tipo.Juridica, nome)),
+            Tipo.Fisica => Ok(Receita.ToReceitaDto(await _processService.ProcurarReceitaAsync(Tipo.Fisica, nome))),
+            Tipo.Juridica => Ok(Receita.ToReceitaDto(await _processService.ProcurarReceitaAsync(Tipo.Juridica, nome))),
             _ => BadRequest("Tipo inválido. Use 'fisica' ou 'juridica'.")
+
         };
     }
 
