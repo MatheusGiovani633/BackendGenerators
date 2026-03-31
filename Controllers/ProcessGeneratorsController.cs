@@ -37,11 +37,15 @@ public class ProcessGeneratorsController : ControllerBase
             medico = new List<Medico> { await _pessoaService.CriarMedicoAleatorioAsync() };
         }
 
+        var codPessoa = pessoa[Random.Shared.Next(pessoa.Count)].Cod_Pessoa;
+        var codVendedor = vendedor[Random.Shared.Next(vendedor.Count)].Cod_Pessoa;
+        var codMedico = medico[Random.Shared.Next(medico.Count)].Cod_Medico;
+
         var receita = await _processService.CriarReceitaAleatoriaAsync(
-            pessoa.Select(p => p.Cod_Pessoa).FirstOrDefault(),
+            codPessoa,
             ordemServicoCaixa,
-            vendedor.Select(v => v.Cod_Pessoa).FirstOrDefault(),
-            medico.Select(m => m.Cod_Medico).FirstOrDefault()
+            codVendedor,
+            codMedico
         );
         if (receita == null) return BadRequest("Erro ao criar receita.");
         return Ok(receita);
