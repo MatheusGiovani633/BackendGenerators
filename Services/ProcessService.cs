@@ -1,6 +1,7 @@
 
 namespace BackendGenerators.Services
 {
+    using System.Linq;
     using BackendGenerators.Repository;
     using BackendGenerators.Helpers;
     using BackendGenerators.Models;
@@ -18,14 +19,15 @@ namespace BackendGenerators.Services
             var receita = Helpers.CriarReceita(codPessoa, codOrdemServicoCaixa, codVendedor, codMedico);
             return await _repo.CriarReceitaAleatoriaAsync(receita);
         }
-        public async Task<Receita> ProcurarReceitaAsync(Tipo tipo, string nome)
+        public async Task<List<Receita>> ProcurarReceitaAsync(Tipo tipo, string nome)
         {
-            var receita = await _repo.ProcurarReceitaAsync(tipo, nome);
-            if (receita == null)
-            {     
-                return await _repo.CriarReceitaAleatoriaAsync(receita);
+            var receitas = await _repo.ProcurarReceitaAsync(tipo, nome);
+            if (receitas == null || receitas.Count == 0)
+            {
+                var receitaCriada = await _repo.CriarReceitaAleatoriaAsync(new Receita());
+                return new List<Receita> { receitaCriada };
             }
-            if (receita.Pessoa == null)
+            if (receitas.Any(r => r.Pessoa == null))
             {
                 throw new ArgumentException("Não há pessoas cadastrasdas para esse tipo de operação, utilizar o endpoint /pessoas");
             }
@@ -34,7 +36,7 @@ namespace BackendGenerators.Services
                 throw new ArgumentException("Tipo é obrigatório e deve ser válido.", nameof(tipo));
             }
 
-            return receita;
+            return receitas;
         }
     }
 }

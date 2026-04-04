@@ -5,7 +5,7 @@ namespace BackendGenerators.Services
     public interface IProcessService
     {
         Task<Receita> CriarReceitaAleatoriaAsync(int codPessoa, int codOrdemServicoCaixa, int codVendedor, int codMedico);
-        Task<Receita> ProcurarReceitaAsync(Tipo tipo, string nome);
+        Task<List<Receita>> ProcurarReceitaAsync(Tipo tipo, string nome);
     }
 
 }

@@ -48,7 +48,7 @@ public class ProcessGeneratorsController : ControllerBase
             codMedico
         );
         if (receita == null) return BadRequest("Erro ao criar receita.");
-        return Ok(receita);
+        return Ok(Receita.ToReceitaDto(receita));
     }
     [HttpGet("receita")]
     public async Task<ActionResult<Receita>> ProcurarReceita([FromQuery] string tipo, [FromQuery] string nome)
@@ -59,8 +59,8 @@ public class ProcessGeneratorsController : ControllerBase
         }
         return tipoEnum switch
         {
-            Tipo.Fisica => Ok(Receita.ToReceitaDto(await _processService.ProcurarReceitaAsync(Tipo.Fisica, nome))),
-            Tipo.Juridica => Ok(Receita.ToReceitaDto(await _processService.ProcurarReceitaAsync(Tipo.Juridica, nome))),
+            Tipo.Fisica => Ok((await _processService.ProcurarReceitaAsync(Tipo.Fisica, nome)).Select(Receita.ToReceitaDto).ToList()),
+            Tipo.Juridica => Ok((await _processService.ProcurarReceitaAsync(Tipo.Juridica, nome)).Select(Receita.ToReceitaDto).ToList()),
             _ => BadRequest("Tipo inválido. Use 'fisica' ou 'juridica'.")
 
         };

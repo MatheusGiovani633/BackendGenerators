@@ -19,14 +19,15 @@ namespace BackendGenerators.Repository
             await _db.SaveChangesAsync();
             return receita;
         }
-        public async Task<Receita> ProcurarReceitaAsync(Tipo tipo, string nome)
+        public async Task<List<Receita>> ProcurarReceitaAsync(Tipo tipo, string nome)
         {
             return await _db.Receitas
                 .Include(r => r.Pessoa)
-                .FirstOrDefaultAsync(r =>
+                .Where(r =>
                     tipo == Tipo.Fisica && r.Pessoa.Nome.Contains(nome) ||
                     tipo == Tipo.Juridica && r.Pessoa.Nome.Contains(nome)
-                );
+                )
+                .ToListAsync();
         }
     }
 
