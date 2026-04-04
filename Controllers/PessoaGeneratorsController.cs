@@ -3,6 +3,7 @@ using BackendGenerators.Models;
 using BackendGenerators.Services;
 using Microsoft.AspNetCore.Mvc;
 using BackendGenerators.Enums;
+using Microsoft.AspNetCore.OutputCaching;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -35,6 +36,7 @@ public class GeneratorsController : ControllerBase
     }
 
     [HttpGet("pessoa/{tipo}")]
+    [OutputCache(Duration = 15)]
     public async Task<ActionResult<Pessoa>> GetPessoaTipoAleatoria(string tipo)
     {
 
@@ -53,6 +55,7 @@ public class GeneratorsController : ControllerBase
     }
 
     [HttpGet("pessoa")]
+    [OutputCache(Duration = 15)]
     public async Task<ActionResult<List<Pessoa>>> GetPessoaAleatoria([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
     {
         var pessoas = await _pessoaService.GetPessoaAleatoriaAsync(page, pageSize);
@@ -86,6 +89,7 @@ public class GeneratorsController : ControllerBase
     }
 
     [HttpGet("medico")]
+    [OutputCache(Duration = 25)]
     public async Task<ActionResult<List<Medico>>> GetMedicoAleatorio()
     {
 

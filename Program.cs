@@ -18,11 +18,13 @@ builder.Services.AddScoped<AuthRepository>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<IPasswordHasher, BcryptPasswordHasher>();
 builder.Services.AddScoped<IRefreshTokenGenerator, GuidRefreshTokenGenerator>();
+builder.Services.AddOutputCache();
 
 var connectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
 builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 var app = builder.Build();
+app.UseOutputCache();
 
 if (app.Environment.IsDevelopment())
 {

@@ -1,8 +1,9 @@
-
 using BackendGenerators.Models;
 using BackendGenerators.Services;
 using Microsoft.AspNetCore.Mvc;
 using BackendGenerators.Enums;
+using Microsoft.AspNetCore.OutputCaching;
+
 [ApiController]
 [Route("api/[controller]")]
 public class ProcessGeneratorsController : ControllerBase
@@ -51,6 +52,7 @@ public class ProcessGeneratorsController : ControllerBase
         return Ok(Receita.ToReceitaDto(receita));
     }
     [HttpGet("receita")]
+    [OutputCache(Duration = 60)]
     public async Task<ActionResult<Receita>> ProcurarReceita([FromQuery] string tipo, [FromQuery] string nome)
     {
         if (!Enum.TryParse<Tipo>(tipo, true, out var tipoEnum))
