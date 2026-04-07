@@ -47,6 +47,11 @@ namespace BackendGenerators.Services
         {
             return await _repo.GetMedicoAleatorioAsync();
         }
+
+         public async Task<List<Medico>> GetMedicoByIdAsync(int id)
+        {
+            return await _repo.GetMedicoByIdAsync(id);
+        }
         
         public async Task<List<Pessoa>> GetPessoaAleatoriaAsync(int page, int pageSize)
         {
@@ -71,7 +76,5 @@ namespace BackendGenerators.Services
         {
             return await _repo.GetPessoaByIdAsync(id);
         }
-        
-
     }
 }

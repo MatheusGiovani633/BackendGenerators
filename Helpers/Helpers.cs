@@ -1,6 +1,8 @@
+using BackendGenerators.Models;
+using Microsoft.AspNetCore.Mvc;
+using Models.Dtos;
 namespace BackendGenerators.Helpers
 {
-    using BackendGenerators.Models;
     public class Helpers
     {
         private static readonly Random _random = new();
@@ -42,21 +44,21 @@ namespace BackendGenerators.Helpers
                 DataEmissao = DateTime.Now,
                 DataPrescricao = DateTime.Now,
                 DataAviamento = DateTime.Now,
-                LenteOD = Math.Round(_random.Next(0,41) * 0.25m, 2),
-                LenteOE = Math.Round(_random.Next(0,41) * 0.25m, 2),
+                LenteOD = Math.Round(_random.Next(0, 41) * 0.25m, 2),
+                LenteOE = Math.Round(_random.Next(0, 41) * 0.25m, 2),
                 Altura = Math.Round((decimal)(_random.NextDouble() * 10), 2),
-                esfericoOD = Math.Round(_random.Next(0,41) * 0.25m, 2),
-                esfericoOE = Math.Round(_random.Next(0,41) * 0.25m, 2),
-                cilindricoOD = Math.Round(_random.Next(0,41) * 0.25m, 2),
-                cilindricoOE = Math.Round(_random.Next(0,41) * 0.25m, 2),
+                esfericoOD = Math.Round(_random.Next(0, 41) * 0.25m, 2),
+                esfericoOE = Math.Round(_random.Next(0, 41) * 0.25m, 2),
+                cilindricoOD = Math.Round(_random.Next(0, 41) * 0.25m, 2),
+                cilindricoOE = Math.Round(_random.Next(0, 41) * 0.25m, 2),
                 eixoOD = Math.Round((decimal)(_random.NextDouble() * 180), 2),
                 eixoOE = Math.Round((decimal)(_random.NextDouble() * 180), 2),
-                AdicaoOD = _random.Next(0,81),
-                AdicaoOE = _random.Next(0,81),
-                DNPOD = _random.Next(0,81),
-                DNPOE = _random.Next(0,81),
-                COOD =  _random.Next(0,81),
-                COOE =  _random.Next(0,81),
+                AdicaoOD = _random.Next(0, 81),
+                AdicaoOE = _random.Next(0, 81),
+                DNPOD = _random.Next(0, 81),
+                DNPOE = _random.Next(0, 81),
+                COOD = _random.Next(0, 81),
+                COOE = _random.Next(0, 81),
             };
         }
 
@@ -123,6 +125,22 @@ namespace BackendGenerators.Helpers
             resto = soma % 11;
             cnpj[13] = resto < 2 ? 0 : 11 - resto;
             return string.Join("", cnpj);
+        }
+        public static List<LinkDto> CriarLinks(IUrlHelper url, string? getAction, string? postAction, int? id)
+        {
+            var links = new List<LinkDto>();
+
+            var selfHref = url.Action(getAction, new { id });
+            if (!string.IsNullOrWhiteSpace(selfHref))
+                links.Add(new LinkDto { Rel = "self", Href = selfHref, Method = "GET" });
+
+            if (!string.IsNullOrWhiteSpace(postAction))
+            {
+                var href = url.Action(postAction, new { id });
+                if (!string.IsNullOrWhiteSpace(href))
+                    links.Add(new LinkDto { Rel = "create", Href = href, Method = "POST" });
+            }
+            return links;
         }
     }
 }

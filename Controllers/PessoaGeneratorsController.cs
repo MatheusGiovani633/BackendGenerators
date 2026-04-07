@@ -4,6 +4,7 @@ using BackendGenerators.Services;
 using Microsoft.AspNetCore.Mvc;
 using BackendGenerators.Enums;
 using Microsoft.AspNetCore.OutputCaching;
+using BackendGenerators.Helpers;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -29,8 +30,16 @@ public class GeneratorsController : ControllerBase
         var pessoa = await _pessoaService.CriarPessoaAleatoriaAsync(tipoEnum);
         return tipoEnum switch
         {
-            Tipo.Fisica => Ok(Pessoa.ToPessoaFisicaDto(pessoa)),
-            Tipo.Juridica => Ok(Pessoa.ToPessoaJuridicaDto(pessoa)),
+            Tipo.Fisica => Ok(new
+            {
+                Pessoa = Pessoa.ToPessoaFisicaDto(pessoa),
+                Links = Helpers.CriarLinks(Url, "GetPessoaId", "CriarPessoa", pessoa.Identificador)
+            }),
+            Tipo.Juridica => Ok(new
+            {
+                Pessoa = Pessoa.ToPessoaJuridicaDto(pessoa),
+                Links = Helpers.CriarLinks(Url, "GetPessoaId", "CriarPessoa", pessoa.Identificador)
+            }),
             _ => BadRequest("Tipo inválido. Use 'fisica' ou 'juridica'.")
         };
     }
@@ -48,8 +57,16 @@ public class GeneratorsController : ControllerBase
         var pessoa = await _pessoaService.GetPessoaAleatoriaTipoAsync(tipoEnum);
         return tipoEnum switch
         {
-            Tipo.Fisica => Ok(Pessoa.ToPessoaFisicaDto(pessoa)),
-            Tipo.Juridica => Ok(Pessoa.ToPessoaJuridicaDto(pessoa)),
+            Tipo.Fisica => Ok(new
+            {
+                Pessoa = Pessoa.ToPessoaFisicaDto(pessoa),
+                Links = Helpers.CriarLinks(Url, "GetPessoaId", "CriarPessoa", pessoa.Identificador)
+            }),
+            Tipo.Juridica => Ok(new
+            {
+                Pessoa = Pessoa.ToPessoaJuridicaDto(pessoa),
+                Links = Helpers.CriarLinks(Url, "GetPessoaId", "CriarPessoa", pessoa.Identificador)
+            }),
             _ => BadRequest("Tipo inválido. Use 'fisica' ou 'juridica'.")
         };
     }
@@ -67,7 +84,11 @@ public class GeneratorsController : ControllerBase
             return NoContent();
 
         var pessoasDto = pessoas.Select(p => Pessoa.ToPessoaDto(p)).ToList();
-        return Ok(pessoasDto);
+        return Ok(new
+        {
+            Pessoas = pessoasDto,
+            Links = Helpers.CriarLinks(Url, "GetPessoaAleatoria", "CriarPessoa", null)
+        });
     }
 
     [HttpGet("pessoa/{id:int}")]
@@ -76,7 +97,11 @@ public class GeneratorsController : ControllerBase
         var pessoa = await _pessoaService.GetPessoaByIdAsync(id);
         if (pessoa == null) return NotFound("O ID informado não existe");
         var pessoaDto = Pessoa.ToPessoaDto(pessoa);
-        return Ok(pessoaDto);
+        return Ok(new
+        {
+            Pessoa = pessoaDto,
+            Links = Helpers.CriarLinks(Url, "GetPessoaId", "CriarPessoa", pessoa.Identificador)
+        });
     }
 
     [HttpPost("medico")]
@@ -85,24 +110,30 @@ public class GeneratorsController : ControllerBase
         var medico = await _pessoaService.CriarMedicoAleatorioAsync();
         if (medico == null) return BadRequest("Erro ao criar médico.");
         var medicoDto = Pessoa.ToMedicoDto(medico.Pessoa);
-        return Ok(medicoDto);
+        return Ok(new
+        {
+            Medico = medicoDto,
+            Links = Helpers.CriarLinks(Url, "GetMedicobyId", "CriarMedico", medico.Pessoa.Identificador)
+        });
     }
 
-    [HttpGet("medico")]
+    [HttpGet("medico/{id:int}")]
     [OutputCache(Duration = 25)]
-    public async Task<ActionResult<List<Medico>>> GetMedicoAleatorio()
+    public async Task<ActionResult<List<Medico>>> GetMedicobyId(int id)
     {
 
-        var medicos = await _pessoaService.GetMedicoAleatorioAsync();
+        var medicos = await _pessoaService.GetMedicoByIdAsync(id);
         if (medicos == null)
-            return StatusCode(500, "Erro ao buscar medicos.");
-
+            return StatusCode(500, "Erro ao buscar médicos.");
         if (medicos.Count == 0)
             return NoContent();
 
         var medicosDto = medicos.Select(m => Pessoa.ToMedicoDto(m.Pessoa)).ToList();
-        return Ok(medicosDto);
-
+        return Ok(new
+        {
+            Medicos = medicosDto,
+            Links = Helpers.CriarLinks(Url, "GetMedicobyId", "CriarMedico", id)
+        });
     }
 
 }

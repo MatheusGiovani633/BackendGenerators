@@ -62,6 +62,14 @@ namespace BackendGenerators.Repository
                 .AsNoTracking()
                 .ToListAsync();
         }
+        public async Task<List<Medico>> GetMedicoByIdAsync(int id)
+        {
+            return await _db.Medico
+                .Include(m => m.Pessoa)
+                .AsNoTracking()
+                .Where(m => m.Pessoa.Identificador == id)
+                .ToListAsync();
+        }
         public async Task<Pessoa> GetPessoaAleatoriaFisicaAsync(Tipo tipo)
         {
             return await _db.Pessoas
@@ -80,7 +88,7 @@ namespace BackendGenerators.Repository
         }
         public async Task<Pessoa> GetPessoaByIdAsync(int id)
         {
-            return await _db.Pessoas.FindAsync(id);
+            return await _db.Pessoas.AsNoTracking().FirstOrDefaultAsync(p => p.Identificador == id);
         }
 
     }

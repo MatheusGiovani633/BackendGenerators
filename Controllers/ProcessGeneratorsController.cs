@@ -3,6 +3,7 @@ using BackendGenerators.Services;
 using Microsoft.AspNetCore.Mvc;
 using BackendGenerators.Enums;
 using Microsoft.AspNetCore.OutputCaching;
+using BackendGenerators.Helpers;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -49,7 +50,11 @@ public class ProcessGeneratorsController : ControllerBase
             codMedico
         );
         if (receita == null) return BadRequest("Erro ao criar receita.");
-        return Ok(Receita.ToReceitaDto(receita));
+        return Ok(new
+        {
+            Receita = Receita.ToReceitaDto(receita),
+            Links = Helpers.CriarLinks(Url, "ProcurarReceita", "CriarReceitaAleatoria", receita.Cod_Receita)
+        });
     }
     [HttpGet("receita")]
     [OutputCache(Duration = 60)]
@@ -61,8 +66,12 @@ public class ProcessGeneratorsController : ControllerBase
         }
         return tipoEnum switch
         {
-            Tipo.Fisica => Ok((await _processService.ProcurarReceitaAsync(Tipo.Fisica, nome)).Select(Receita.ToReceitaDto).ToList()),
-            Tipo.Juridica => Ok((await _processService.ProcurarReceitaAsync(Tipo.Juridica, nome)).Select(Receita.ToReceitaDto).ToList()),
+            Tipo.Fisica => Ok(new { Receitas = (await _processService.ProcurarReceitaAsync(Tipo.Fisica, nome)).Select(Receita.ToReceitaDto).ToList(), Links = Helpers.CriarLinks(Url, "ProcurarReceita", "CriarReceitaAleatoria", null) }),
+            Tipo.Juridica => Ok(new
+            {
+                Receitas = (await _processService.ProcurarReceitaAsync(Tipo.Juridica, nome)).Select(Receita.ToReceitaDto).ToList(),
+                Links = Helpers.CriarLinks(Url, "ProcurarReceita", "CriarReceitaAleatoria", null)
+            }),
             _ => BadRequest("Tipo inválido. Use 'fisica' ou 'juridica'.")
 
         };

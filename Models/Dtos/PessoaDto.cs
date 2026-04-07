@@ -1,4 +1,3 @@
-
 namespace BackendGenerators.Models.Dtos
 {
     public class PessoaDto
@@ -25,5 +24,6 @@ namespace BackendGenerators.Models.Dtos
         public string InscricaoEstadual { get; set; }
         public string InscricaoMunicipal { get; set; }
         public int TipoCNPJ { get; set; }
+
     }
 }
