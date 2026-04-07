@@ -136,4 +136,14 @@ public class GeneratorsController : ControllerBase
         });
     }
 
+    [HttpGet("ExportPessoas")]
+    [OutputCache(Duration = 25)]
+    public async Task<FileResult> ExportPessoas()
+    {
+        var pessoas = await _pessoaService.GetPessoaAleatoriaAsync(page: 1, pageSize: 100);
+        var csv = Helpers.GerarCsv(pessoas);
+        return csv;
+    }
+
+
 }

@@ -142,5 +142,16 @@ namespace BackendGenerators.Helpers
             }
             return links;
         }
+        public static FileResult GerarCsv(List<Pessoa> pessoas)
+        {
+            var csv = "Cod_Pessoa,Identificador,Nome,RazaoSocial,Email,Telefone,Celular,Celular2,DataNascimento,Cpf,Cnpj,Sexo,Cep,Logradouro,Numero,Cidade,Estado,Complemento,Bairro,InscricaoEstadual,InscricaoMunicipal,TipoCNPJ\n";
+            foreach (var p in pessoas)
+            {
+                csv += $"{p.Cod_Pessoa},{p.Identificador},{p.Nome},{p.Razaosocial},{p.Email},{p.Telefone},{p.Celular},{p.Celular2},{p.DataNascimento:yyyy-MM-dd},{p.Cpf},{p.Cnpj},{p.Sexo},{p.Cep},{p.Logradouro},{p.Numero},{p.Cidade},{p.Estado},{p.Complemento},{p.Bairro},{p.InscricaoEstadual},{p.InscricaoMunicipal},{p.TipoCNPJ}\n";
+            }
+            var bytes = System.Text.Encoding.UTF8.GetBytes(csv);
+            return new FileContentResult(bytes, "text/csv") { FileDownloadName = "pessoas.csv" };
+
+        }
     }
 }
